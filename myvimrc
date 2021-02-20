@@ -1,8 +1,12 @@
 set number relativenumber
 set nowrap
+set nohlsearch
 syntax on
 
 autocmd FileType yaml setlocal ai ts=2 sw=2 et cursorcolumn
+" autocmd FileType yaml, shell  autocmd BufWritePre <buffer> %s/\s\+$//e
+autocmd BufWritePre <buffer> %s/\s\+$//e
+
 
 :nmap <f4><f4> :set invnumber<cr>
 
