@@ -9,9 +9,7 @@ wget https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_al
 echo "put aliases in .bashrc"
 
 echo '[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases' >> ~/.bashrc
-
-echo "source bashrc"
-source .bashrc
+echo 'complete -F __start_kubectl k' >>~/.bashrc
 
 # Get my .vimrc
 
@@ -29,3 +27,9 @@ source <(kubectl completion bash)
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
 sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+
+# Enable kubectl autocompletion
+kubectl completion bash >/etc/bash_completion.d/kubectl
+
+echo "source bashrc"
+source ~/.bashrc
