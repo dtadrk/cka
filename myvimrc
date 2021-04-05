@@ -7,6 +7,7 @@ autocmd FileType yaml setlocal ai ts=2 sw=2 et cursorcolumn
 " autocmd FileType yaml, shell  autocmd BufWritePre <buffer> %s/\s\+$//e
 autocmd BufWritePre <buffer> %s/\s\+$//e
 
+set pastetoggle=<F2>
 
 :nmap <f4><f4> :set invnumber<cr>
 
