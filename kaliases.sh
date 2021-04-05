@@ -21,8 +21,6 @@ echo "enable my .vimrc"
 
 cat myvimrc > ~/.vimrc
 
-source <(kubectl completion bash)
-
 # Install kubens and kubectx
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
 sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
