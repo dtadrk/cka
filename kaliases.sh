@@ -29,5 +29,8 @@ sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 # Enable kubectl autocompletion
 kubectl completion bash >/etc/bash_completion.d/kubectl
 
+echo 'alias k=kubectl' >>~/.bashrc
+echo 'complete -F __start_kubectl k' >>~/.bashrc
+
 echo "source bashrc"
 source ~/.bashrc
