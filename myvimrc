@@ -3,15 +3,48 @@ set nowrap
 set nohlsearch
 syntax on
 
+" Do things in YAML files
 autocmd FileType yaml setlocal ai ts=2 sw=2 et cursorcolumn
-" autocmd FileType yaml, shell  autocmd BufWritePre <buffer> %s/\s\+$//e
+
+" Remove trailing whitespace upon save
 autocmd BufWritePre <buffer> %s/\s\+$//e
 
-set pastetoggle=<F2>
-
-:nmap <f4><f4> :set invnumber<cr>
-
 :noremap Q !!$SHELL<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Toggles
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Map key to toggle opt
+function MapToggle(key, opt)
+  let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
+  exec 'nnoremap '.a:key.' '.cmd
+  exec 'inoremap '.a:key." \<C-O>".cmd
+endfunction
+command -nargs=+ MapToggle call MapToggle(<f-args>)
+
+" Display-altering option toggles
+MapToggle <F1> hlsearch
+MapToggle <F2> paste
+MapToggle <F3> list
+MapToggle <F4> wrap
+
+"Relative with start point or with line number or absolute number lines
+function! NumberToggle()
+    if(&number == 1)
+        set number!
+        set relativenumber!
+      elseif(&relativenumber==1)
+        set relativenumber
+        set number
+      else
+        set norelativenumber
+        set number
+    endif
+endfunction
+
+nnoremap <F5> :call NumberToggle()<CR>
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
