@@ -3,6 +3,9 @@ set nowrap
 set nohlsearch
 syntax on
 
+" no bells and whistles
+set noeb vb t_vb=
+
 " Do things in YAML files
 autocmd FileType yaml setlocal ai ts=2 sw=2 et cursorcolumn
 
